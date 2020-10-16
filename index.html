@@ -10,13 +10,13 @@
     </ul>
     <script>
         let url =
-            'https://spreadsheets.google.com/feeds/cells/1EvaBEYawHLbtERCyMHldqChijQefu9HrZ3uAYr6h6zM/2/public/full?alt=json';
+            'https://spreadsheets.google.com/feeds/cells/1EvaBEYawHLbtERCyMHldqChijQefu9HrZ3uAYr6h6zM/1/public/full?alt=json';
         let list = document.getElementById("sigurnatures");
         fetch(url).then((responce) => {
             return responce.json();   
         }).then((json) => {
             console.log(json);
-            for (let i = 0; i < json.feed.entry.length; ++i) {
+            for (let i = 3; i < json.feed.entry.length; i+=2) {
                 if (json.feed.entry[i].content.$t === '') {
 
                 }
