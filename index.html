@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSf_b2nAMweVwMm6NFy5-uISVl44xSPRFYWPxDN-hnVqDsTd7Q/viewform?usp=sf_link">Add
+        your name to the list</a>
+    <ul id="sigurnatures">
+
+    </ul>
+    <script>
+        let url =
+            'https://spreadsheets.google.com/feeds/cells/1EvaBEYawHLbtERCyMHldqChijQefu9HrZ3uAYr6h6zM/2/public/full?alt=json';
+        let list = document.getElementById("sigurnatures");
+        fetch(url).then((responce) => {
+            return responce.json();   
+        }).then((json) => {
+            console.log(json);
+            for (let i = 0; i < json.feed.entry.length; ++i) {
+                if (json.feed.entry[i].content.$t === '') {
+
+                }
+                else {
+                    console.log(json.feed.entry[i].content.$t);
+                    let name = document.createElement('li');
+                    name.innerHTML = json.feed.entry[i].content.$t;
+                    list.appendChild(name);
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>
